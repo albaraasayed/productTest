@@ -379,3 +379,34 @@ input[type="radio"] { margin-left: 5px; transform: scale(1.2); }
     .main-header h1 { font-size: 1.5rem; }
     .match-item { font-size: 1rem; padding: 5px 10px; }
 }
+
+/* تنسيقات حالات الإجابة */
+.option-label {
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 10px 20px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    border: 2px solid #eee;
+    transition: all 0.3s ease;
+}
+
+.option-label.correct-selected {
+    background-color: #d4efdf !important; /* أخضر فاتح */
+    border-color: #2ecc71 !important;
+    color: #145a32;
+    transform: scale(1.05);
+}
+
+.option-label.wrong-selected {
+    background-color: #fadbd8 !important; /* أحمر فاتح */
+    border-color: #e74c3c !important;
+    color: #78281f;
+}
+
+/* إخفاء دائرة الراديو الأصلية لجعل التصميم أجمل (اختياري) */
+.option-label input[type="radio"] {
+    margin-left: 8px;
+}

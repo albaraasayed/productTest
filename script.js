@@ -64,6 +64,30 @@ document.querySelectorAll('.col-b .match-item').forEach(item => {
         }
     });
 });
+// نظام تصحيح الاختيار من متعدد
+document.querySelectorAll('.options input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+        const parentLabel = this.parentElement;
+        const allLabelsInGroup = parentLabel.parentElement.querySelectorAll('.option-label');
+
+        // إعادة الشكل الطبيعي لكل الخيارات في نفس السؤال أولاً
+        allLabelsInGroup.forEach(label => {
+            label.classList.remove('correct-selected', 'wrong-selected');
+        });
+
+        // فحص القيمة
+        if (this.value === 'correct') {
+            parentLabel.classList.add('correct-selected');
+            // صوت تشجيعي بسيط (اختياري)
+            console.log("إجابة صحيحة!");
+        } else {
+            parentLabel.classList.add('wrong-selected');
+            // إضافة اهتزاز عند الخطأ
+            parentLabel.style.animation = "shake 0.5s";
+            setTimeout(() => parentLabel.style.animation = "", 500);
+        }
+    });
+});
 
 function handleCorrectMatch(source, target) {
     source.classList.remove('selected');
